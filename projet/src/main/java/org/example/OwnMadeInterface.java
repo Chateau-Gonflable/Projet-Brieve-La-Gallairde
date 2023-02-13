@@ -12,11 +12,11 @@ public class OwnMadeInterface extends JFrame {
         this.setSize(2500,2500);
         JButton button = new JButton("Press");
         JPanel panel = new JPanel();
-        Node n1 = new Node();
-        Node n2 = new Node();
-        Node n3 = new Node();
-        Node n4 = new Node();
-        Node n5 = new Node();
+        Node n1 = new Node("",new Port(),new Port());
+        Node n2 = new Node("",new Port(),new Port());
+        Node n3 = new Node("",new Port(),new Port());
+        Node n4 = new Node("",new Port(),new Port());
+        Node n5 = new Node("",new Port(),new Port());
         NodeGUI ng1 = new NodeGUI(n1,1);
         NodeGUI ng2 = new NodeGUI(n1,2);
         NodeGUI ng3 = new NodeGUI(n1,3);
@@ -34,8 +34,10 @@ public class OwnMadeInterface extends JFrame {
     }
     public void drawPort(Port begin, Port end, int height){
         g.drawLine(begin.x,begin.y,begin.x,height);
-        g.drawLine(begin.x,height,end.x,height);
-        g.drawLine(begin.y,height,end.x,begin.y);
+        g.drawLine(begin.x,height,(begin.x+ end.x)/2,height);
+        g.drawLine((begin.x+ end.x)/2,height,(begin.x+end.x)/2,-height);
+        g.drawLine((begin.x+end.x)/2,-height,end.x,-height);
+        g.drawLine(end.x,-height,end.x,end.y);
         drawArrow(end);
     }
     //TO DO
